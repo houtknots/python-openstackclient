@@ -335,13 +335,6 @@ class AddFixedIP(command.ShowOne):
         else:
             net_id = parsed_args.network
 
-        if not sdk_utils.supports_microversion(compute_client, '2.44'):
-            compute_client.add_fixed_ip_to_server(
-                server.id,
-                net_id
-            )
-            return ((), ())
-
         kwargs = {
             'net_id': net_id
         }
